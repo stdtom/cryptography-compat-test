@@ -1,0 +1,31 @@
+# Config file for automatic testing at travis-ci.com
+
+language: shell
+os: windows
+env:
+- PYVER=3.8.6 PYSHORT=38 CRYPTO=2.9.1
+- PYVER=3.9.0 PYSHORT=39 CRYPTO=2.9.1
+- PYVER=3.8.6 PYSHORT=38 CRYPTO=2.9.2
+- PYVER=3.9.0 PYSHORT=39 CRYPTO=2.9.2
+- PYVER=3.8.6 PYSHORT=38 CRYPTO=3.0
+- PYVER=3.9.0 PYSHORT=39 CRYPTO=3.0
+- PYVER=3.8.6 PYSHORT=38 CRYPTO=3.1
+- PYVER=3.9.0 PYSHORT=39 CRYPTO=3.1
+- PYVER=3.8.6 PYSHORT=38 CRYPTO=3.1.1
+- PYVER=3.9.0 PYSHORT=39 CRYPTO=3.1.1
+
+
+install:
+  - choco install python --version 3.9.0
+  - python -m pip install --upgrade pip
+
+# Command to run tests, e.g. python setup.py test
+script:
+  - export PATH=/c/Python$PYSHORT:/c/Python$PYSHORT/Scripts:$PATH
+  - echo $PYVER
+  - echo $PYSHORT
+  - echo $CRYPTO
+  - echo $PATH
+  - pip install -U azure-cli
+
+
